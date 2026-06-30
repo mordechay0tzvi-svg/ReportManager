@@ -1,3 +1,4 @@
+using IntelligencePipeline.Models.Enums;
 namespace IntelligencePipeline.Models.Reports
 {
     class SignalReport : Report
