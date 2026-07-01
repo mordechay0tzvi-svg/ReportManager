@@ -16,7 +16,7 @@ namespace IntelligencePipeline.Models.Reports
             ConfidenceLevel = confidenceLevel;
         }
 
-        public override string GetSourceType() =>; "Soldier";
+        public override string GetSourceType() => "Soldier";
         public override int CalculateReliabilityScore() 
         {
             int score = 4;

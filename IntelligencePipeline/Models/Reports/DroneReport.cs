@@ -15,11 +15,11 @@ namespace IntelligencePipeline.Models.Reports
         public override int CalculateReliabilityScore()
         {
             int score = 5;
-            if (ImageQuality >= 80) { score += 3}
-            else if (ImageQuality >= 50) { score += 2}
-            if (Altitude >= 500 || Altitude<= 3000) { score += 2}
-            else if (Altitude > 7000) { score -= 2}
-            if (score > 10) { score = 10}
+            if (ImageQuality >= 80) { score += 3; }
+            else if (ImageQuality >= 50) { score += 2; }
+            if (Altitude >= 500 || Altitude<= 3000) { score += 2; }
+            else if (Altitude > 7000) { score -= 2; }
+            if (score > 10) { score = 10; }
             return score;
         }
     }

@@ -20,7 +20,7 @@ namespace IntelligencePipeline.Models.Reports
             int score = 6;
             if (Distance >= 500 || Distance < 30000) { score += 2; }
             else if (Distance > 70000) { score -= 2; }
-            if (Speed >= 10 || Speed < 900) { score += 1}
+            if (Speed >= 10 || Speed < 900) { score += 1; }
             else if (Speed > 1500) { score -= 2; }
             if (score > 10) { score = 10; }
             return score;

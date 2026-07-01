@@ -4,7 +4,7 @@ namespace IntelligencePipeline.Calculators
 {
     class PriorityCalculator
     {
-        public void Calculate(Report report) 
+        public Priority Calculate(Report report) 
         {
             string desc = report.Description.ToLower();
             if (desc.Contains("fire") || desc.Contains("attack") || desc.Contains("missile") || desc.Contains("explosion")) { report.Priority = Priority.Critical; return; }
@@ -19,7 +19,7 @@ namespace IntelligencePipeline.Calculators
             if (desc.Contains("weapon") || desc.Contains("suspicious") || desc.Contains("border")) { report.Priority = Priority.High; return; }
             if (report.GetSourceType() == "Drone" && report.Altitude > 500) { report.Priority = Priority.High; return; }
             if (report.GetSourceType() == "Radar" && report.Speed >= 400) { report.Priority = Priority.High; return; }
-            if (report.GetSourceType() == "Soldier" && report.ConfidenceLevel >= 4 && desc.Contains("movement") { report.Priority = Priority.High; return; }
+            if (report.GetSourceType() == "Soldier" && report.ConfidenceLevel >= 4 && desc.Contains("movement")){ report.Priority = Priority.High; return; }
 
             if (desc.Contains("movement") || desc.Contains("vehicle") || desc.Contains("activity")) { report.Priority = Priority.Medium; return; }
             if (report.GetSourceType() == "Radar" && report.Speed >= 120) { report.Priority = Priority.Medium; return; }

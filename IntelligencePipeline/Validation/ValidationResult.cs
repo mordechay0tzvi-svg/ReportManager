@@ -1,10 +1,11 @@
 using IntelligencePipeline.Models.Enums;
+using IntelligencePipeline.Models.Reports;
 namespace IntelligencePipeline.Validation
 {
     class ValidationResult : IValidator
     {
-        private bool IsValid;
-        private string ErrorMessage;
+        private bool _isvalid;
+        private string _errormessage;
 
         bool IsValid { get; }
         string ErrorMessage { get; }
