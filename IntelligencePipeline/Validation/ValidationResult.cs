@@ -4,11 +4,8 @@ namespace IntelligencePipeline.Validation
 {
     class ValidationResult : IValidator
     {
-        private bool _isvalid;
-        private string _errormessage;
-
-        bool IsValid { get; }
-        string ErrorMessage { get; }
+        public bool IsValid { get; }
+        public string ErrorMessage { get; }
 
         public ValidationResult(bool isValid, string errorMessage) 
         {
@@ -17,11 +14,11 @@ namespace IntelligencePipeline.Validation
         }
         public static ValidationResult Success() 
         {
-            return new ValidationResult(true, ErrorMessage);
+            return new ValidationResult(true, " ");
         }
         public static ValidationResult Failure(string errorMessage)
         {
-            return new ValidationResult(false, ErrorMessage);
+            return new ValidationResult(false, errorMessage);
         }
     }
 }
