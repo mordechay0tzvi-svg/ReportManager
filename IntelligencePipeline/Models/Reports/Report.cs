@@ -23,9 +23,9 @@ namespace IntelligencePipeline.Models.Reports
             Longitude = longitude;
             Description = description;
             Status = ReportStatus.New;
-            Priority; // ?
-            Classification; // ?
-            ReliabilityScore; //?
+            //Priority; // ?
+            //Classification; // ?
+            //ReliabilityScore = CalculateReliabilityScore(); //?
             RejectionReason = " ";
         }
 

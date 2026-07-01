@@ -17,7 +17,17 @@ namespace IntelligencePipeline.Models.Reports
         }
 
         public override string GetSourceType() => "Signal";
-        public override int CalculateReliabilityScore() { }
+        public override int CalculateReliabilityScore() 
+        {
+            int score = 5;
+            if (SignalStrength >= -40) { score += 3; }
+            else if (SignalStrength >= -70) { score += 2; }
+            string content = Content.ToLower();
+            if (content.Contains("attack") || content.Contains("target") || content.Contains("border") || content.Contains("vehicle")) {score += 1;}
+            if (SignalStrength < -100) { score -= 2; }
+            if (score > 10) {  score = 10; }
+            return score;
+        }
 
     }
 }

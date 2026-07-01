@@ -6,7 +6,7 @@ namespace IntelligencePipeline.Calculators
     {
         public Classification Calculate(Report report)
         {
-            return report.CalculateReliabilityScore();
+            
         }
     }
 }

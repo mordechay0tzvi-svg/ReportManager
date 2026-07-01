@@ -17,6 +17,14 @@ namespace IntelligencePipeline.Models.Reports
         }
 
         public override string GetSourceType() =>; "Soldier";
-        public override int CalculateReliabilityScore() { }
+        public override int CalculateReliabilityScore() 
+        {
+            int score = 4;
+            score += ConfidenceLevel;
+            string desc = Description.ToLower();
+            if (desc.Contains("weapon") || desc.Contains("vehicle") || desc.Contains("movement") || desc.Contains("explosion")) {score += 1;}
+            if (score > 10) { score = 10;}
+            return score;
+        }
     }
 }
