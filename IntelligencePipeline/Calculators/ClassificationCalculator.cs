@@ -5,5 +5,8 @@ namespace IntelligencePipeline.Calculators
     class ClassificationCalculator
     {
         public Classification Calculate(Report report)
+        {
+            return report.CalculateReliabilityScore();
+        }
     }
 }

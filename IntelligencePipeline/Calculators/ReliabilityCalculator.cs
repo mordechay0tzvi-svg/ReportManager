@@ -4,6 +4,9 @@ namespace IntelligencePipeline.Calculators
 {
     class ReliabilityCalculator
     {
-        public int Calculate(Report report) { }
+        public int Calculate(Report report)
+        {
+            
+        }
     }
 }

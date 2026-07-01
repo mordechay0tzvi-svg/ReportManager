@@ -4,29 +4,18 @@ namespace IntelligencePipeline.Models.Reports
 {
     abstract class Report
     {
-        private int _reportId;
-        private DateTime _timestamp;
-        private double _latitude; 
-        private double _longitude;
-        private string _description;
-        private ReportStatus _status;
-        private Priority _priority;
-        private Classification _classification;
-        private int _reliabilityScore;
-        private string _rejectionReason;
+        public int ReportId { get; protected set; }
+        public DateTime Timestamp { get; protected set; }
+        public double Latitude { get; protected set; }
+        public double Longitude { get; protected set; }
+        public string Description { get; protected set; }
+        public ReportStatus Status { get; set; }
+        public Priority Priority { get; set; }
+        public Classification Classification { get; set; }
+        public int ReliabilityScore { get; set; }
+        public string RejectionReason { get; set; }
 
-        public int ReportId { get { => _reportId; } }
-        public DateTime Timestamp { get { => _timestamp; } set { _timestamp = value; } }
-        public double Latitude { get { => _latitude; } set { _latitude = value; }
-        public double Longitude { get { => _longitude; } set{ _longitude = value; } }
-        public string Description { get { => _description; } set { _description = value; } }
-        public ReportStatus Status { get { => _status; } set { _status = value; } }
-        public Priority Priority { get { => _priority; } set { _priority = value; } }
-        public Classification Classification { get { => _classification; } set { _classification = value; } }
-        public int ReliabilityScore { get { => _reliabilityScore; } set { _reliabilityScore = value; } }
-        public string RejectionReason { get { => _rejectionReason; } set { _rejectionReason = value; } }
-
-        protected Report(int reportId, DateTime timestamp, double latitude, double longitude, string description) 
+        protected Report(int reportId, DateTime timestamp, double latitude, double longitude, string description)
         {
             ReportId = reportId;
             Timestamp = timestamp;
@@ -46,4 +35,4 @@ namespace IntelligencePipeline.Models.Reports
         public override string ToString() { }
     } 
 }
-
+   
