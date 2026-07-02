@@ -10,7 +10,10 @@ namespace IntelligencePipeline.Storage
         {
             _reports = new List<Report> { };
         }
-        public void Add(Report report) { }
+        public void Add(Report report) 
+        {
+            _reports.Add(report);
+        }
         public List<Report> GetAll()
         {
             return _reports;
@@ -40,7 +43,7 @@ namespace IntelligencePipeline.Storage
             List<Report> reports = new List<Report>();
             foreach (Report report in _reports)
             {
-                if (report.Description.ToLower().Contains(keyword.ToLower())
+                if (report.Description.ToLower().Contains(keyword.ToLower()))
                     reports.Add(report);
             }
             return reports;

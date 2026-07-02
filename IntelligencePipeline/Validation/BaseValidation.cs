@@ -18,6 +18,6 @@ namespace IntelligencePipeline.Validation
             if (report.Description.Length < 10 || report.Description.Length > 500) { return ValidationResult.Failure("Invalid description"); }
             return ValidationResult.Success();
         }
-        protected abstract ValidationResult ValidateSpecificFields(Report report);
+        protected abstract ValidationResult? ValidateSpecificFields(Report report);
     }
 }
