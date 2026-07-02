@@ -21,16 +21,9 @@ namespace IntelligencePipeline.Pipeline
         {
             report.Status = ReportStatus.Validating;
             ValidateReport(report);
-            if (report.Status == ReportStatus.Validated)
-            {
-                ReliabilityCalculator rb = new ReliabilityCalculator();
-                report.ReliabilityScore = rb.Calculate(report);
-                PriorityCalculator pr = new PriorityCalculator();
-                report.Priority = pr.Calculate(report);
-                ClassificationCalculator cc = new ClassificationCalculator();
-                report.Classification = cc.Calculate(report);
-            }
+            if (report.Status == ReportStatus.Validated) {CalculateMetrics(report);}
             StoreReport(report);
+            _nextReportId++;
             return;
         }
         public ReportRepository GetValidatedReports() 
@@ -43,7 +36,7 @@ namespace IntelligencePipeline.Pipeline
         }
         public void DisplayStatistics() 
         {
-            //
+             
         }
         private IValidator? GetValidator(Report report) 
         {
@@ -80,8 +73,10 @@ namespace IntelligencePipeline.Pipeline
             }
         }
         private void CalculateMetrics(Report report) 
-        { 
-            //
+        {
+            report.ReliabilityScore = new ReliabilityCalculator().Calculate(report);
+            report.Priority = new PriorityCalculator().Calculate(report);
+            report.Classification = new ClassificationCalculator().Calculate(report);
         }
         private void StoreReport(Report report) 
         {
