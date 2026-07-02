@@ -7,25 +7,33 @@ namespace IntelligencePipeline.Calculators
         public Priority Calculate(Report report) 
         {
             string desc = report.Description.ToLower();
-            if (desc.Contains("fire") || desc.Contains("attack") || desc.Contains("missile") || desc.Contains("explosion")) { report.Priority = Priority.Critical; return; }
-            if (report.GetSourceType = "Signal")
+            if (desc.Contains("fire") || desc.Contains("attack") || desc.Contains("missile") || desc.Contains("explosion")) { return Priority.Critical;  }
+            if (report is SignalReport signal)
             {
-                string cont = report.Content.ToLower(); 
-                if (cont.Contains("target") && cont.Contains("attack")) { report.Priority = Priority.Critical; return; }
-                if (cont.Contains("fire") || cont.Contains("attack") || cont.Contains("missile") || cont.Contains("explosion")) { report.Priority = Priority.Critical; return; }          
+                string cont = signal.Content.ToLower(); 
+                if (cont.Contains("target") && cont.Contains("attack")) { return Priority.Critical;}
+                if (cont.Contains("fire") || cont.Contains("attack") || cont.Contains("missile") || cont.Contains("explosion")) { return Priority.Critical; }          
             }
-            if (report.GetSourceType() == "Radar" && report.Speed >= 800) { report.Priority = Priority.Critical; return; }
+            if (report is RadarReport radar)
+            {
+                if (radar.Speed >= 800) { return Priority.Critical; }
+                if (radar.Speed >= 400) { return Priority.High; }
+                if (radar.Speed >= 120) { return Priority.Medium; }
+            }
 
-            if (desc.Contains("weapon") || desc.Contains("suspicious") || desc.Contains("border")) { report.Priority = Priority.High; return; }
-            if (report.GetSourceType() == "Drone" && report.Altitude > 500) { report.Priority = Priority.High; return; }
-            if (report.GetSourceType() == "Radar" && report.Speed >= 400) { report.Priority = Priority.High; return; }
-            if (report.GetSourceType() == "Soldier" && report.ConfidenceLevel >= 4 && desc.Contains("movement")){ report.Priority = Priority.High; return; }
+            if (desc.Contains("weapon") || desc.Contains("suspicious") || desc.Contains("border")) { return Priority.High; }
+            if (report is DroneReport drone)
+            {
+                if (drone.Altitude > 500) { return Priority.High; }
+            }
+            if (report is SoldierReport soldier)
+            {
+                if (soldier.ConfidenceLevel >= 4 && desc.Contains("movement")){ return Priority.High; }
+            }
+            if (desc.Contains("movement") || desc.Contains("vehicle") || desc.Contains("activity")) { return Priority.Medium; }
+            if (report.CalculateReliabilityScore() >= 7) { return Priority.Medium; }
 
-            if (desc.Contains("movement") || desc.Contains("vehicle") || desc.Contains("activity")) { report.Priority = Priority.Medium; return; }
-            if (report.GetSourceType() == "Radar" && report.Speed >= 120) { report.Priority = Priority.Medium; return; }
-            if (report.CalculateReliabilityScore() >= 7) { report.Priority = Priority.Medium; return; }
-
-            report.Priority = Priority.Low; return;
+            return Priority.Low; 
         }
     }
 }

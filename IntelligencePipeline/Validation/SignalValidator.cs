@@ -6,12 +6,11 @@ namespace IntelligencePipeline.Validation
     {
         protected override ValidationResult ValidateSpecificFields(Report report)
         {
-            if (report is not SignalReport) { return ValidationResult.Failure("Wrong type"); }
-            if (report.Frequency > 3000.0 || report.Frequency < 1.0) { return ValidationResult.Failure("Invalid frequency"); }
-            if (report.Content.Length > 1000 || report.Content.Length < 0) { return ValidationResult.Failure("Invalid content"); }
-            if (!Enum.TryParse<Language>(report.Language, out Language _)) { return ValidationResult.Failure("Language is inacceptable"); } 
-            if (report.SignalStrength > 0 || report.SignalStrength < -120) { return ValidationResult.Failure("Invalid signal strength"); }
-            return ValidationResult.Success();
+            if (report is SignalReport signal) {  
+            if (signal.Frequency > 3000.0 || signal.Frequency < 1.0) { return ValidationResult.Failure("Invalid frequency"); }
+            if (signal.Content.Length > 1000 || signal.Content.Length < 0) { return ValidationResult.Failure("Invalid content"); }
+            if (signal.SignalStrength > 0 || signal.SignalStrength < -120) { return ValidationResult.Failure("Invalid signal strength"); }
+            return ValidationResult.Success();}
         }
     }
 }

@@ -1,13 +1,16 @@
-using IntelligencePipeline.Models.Reports
+using IntelligencePipeline.Models.Reports;
 namespace IntelligencePipeline.Storage
 {
-    private List<Report> _rejectedReports;
-    public RejectedReportRepository()
+    class RejectedReportRepository
     {
-        new List<Report>();
+        private List<Report> _rejectedReports;
+        public RejectedReportRepository()
+        {
+            new List<Report>();
+        }
+        public void Add(Report report) { }
+        public List<Report> GetAll() { }
+        public int GetTotalCount() { }
+        public List<Report> GetByReason(string reasonKeyword) { }
     }
-    public void Add(Report report) { }
-    public List<Report> GetAll() { }
-    public int GetTotalCount() { }
-    public List<Report> GetByReason(string reasonKeyword) { }
 }

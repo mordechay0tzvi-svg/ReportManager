@@ -23,16 +23,19 @@ namespace IntelligencePipeline.Models.Reports
             Longitude = longitude;
             Description = description;
             Status = ReportStatus.New;
-            //Priority; // ?
-            //Classification; // ?
-            //ReliabilityScore = CalculateReliabilityScore(); //?
             RejectionReason = " ";
         }
 
         public abstract string GetSourceType();
         public abstract int CalculateReliabilityScore();
-        public virtual string GetSummary() { }
-        public override string ToString() { }
+        public virtual string GetSummary() 
+            {
+            return $"{ReportId} : {Timestamp} : {Latitude} : {Longitude} : {Description}";
+            }
+        public override string ToString()
+        {
+            return $"{ReportId} | {Timestamp} | {Latitude} | {Longitude} | {Description} | {Status} | {Priority} | {Classification} |{ReliabilityScore} | {RejectionReason}";
+        }
     } 
 }
    
