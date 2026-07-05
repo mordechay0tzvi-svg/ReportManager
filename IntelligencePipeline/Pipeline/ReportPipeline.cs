@@ -38,7 +38,7 @@ namespace IntelligencePipeline.Pipeline
         {
              
         }
-        private IValidator? GetValidator(Report report) 
+         private IValidator? GetValidator(Report report) 
         {
             string type = report.GetSourceType();
             switch (type)
