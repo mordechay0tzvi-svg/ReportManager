@@ -16,14 +16,14 @@ namespace program
         {
             foreach(Report report in repository.GetAll())
             {
-                Console.WriteLine(report.ToString());
+                DisplayReport(report);
             }
         }
         private static void DisplayRejectedReports(RejectedReportRepository repository)
         {
             foreach (Report report in repository.GetAll())
             {
-                Console.WriteLine(report.ToString());
+                DisplayReport(report);
             }
         }
 
@@ -120,3 +120,4 @@ namespace program
         }
     }
 }
+ 
