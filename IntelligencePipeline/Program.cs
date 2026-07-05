@@ -2,6 +2,7 @@
 using IntelligencePipeline.Models.Enums;
 using IntelligencePipeline.Pipeline;
 using IntelligencePipeline.Storage;
+using IntelligencePipeline.ReportCreate;
 namespace program
 {
     class Program
@@ -20,40 +21,33 @@ namespace program
         }
 
 
-        public static void Main(string[] args)
+        public static void Main()
         {
-            string reporttype = "";
-            while (!new List<string> { "Drone", "Soldier", "Radar", "Signal" }.Contains(reporttype))
+            ReportPipeline pipeline = new();
+            Console.WriteLine("Enter report type:");
+            string? reporttype = Console.ReadLine();
+            switch (reporttype)
             {
-                Console.WriteLine("Enter report type:");
-                reporttype = Console.ReadLine();
+                case "Drone":
+                    DroneReport NewDroneReport = DroneReportCreate.Build();
+                    pipeline.ProcessReport(NewDroneReport);
+                    break;
+                case "Soldier":
+                    SoldierReport NewSoldierReport = SoldierReportCreate.Build();
+                    pipeline.ProcessReport(NewSoldierReport);
+                    break;
+                case "Radar":
+                    RadarReport NewRadarReport = RadarReportCreate.Build();
+                    pipeline.ProcessReport(NewRadarReport);
+                    break;
+                case "Signal":
+                    SignalReport NewSignalReport = SignalReportCreate.Build();
+                    pipeline.ProcessReport(NewSignalReport);
+                    break;
+                default:
+                    Console.WriteLine("Invalid report type");
+                    break;  
             }
-
-            string datetime = "";
-            while (!DateTime.TryParse(datetime, out DateTime dt))
-            {
-                Console.WriteLine("Enter date and time");
-                datetime = Console.ReadLine(); 
-            }
-
-            string latitude = "";
-            while (double.TryParse(latitude, out double ltd))
-            {
-                Console.WriteLine("Enter latitude");
-                latitude = Console.ReadLine();
-            }
-
-            string longitude = "";
-            while (double.TryParse(longitude, out double lgt))
-            {
-                Console.WriteLine("Enter longitude");
-                longitude = Console.ReadLine();
-            }
-            
-            Console.WriteLine("Enter description");
-            string description = Console.ReadLine();
-
-           
         }
     }
 }

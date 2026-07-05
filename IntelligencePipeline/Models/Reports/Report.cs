@@ -4,6 +4,7 @@ namespace IntelligencePipeline.Models.Reports
 {
     abstract class Report
     {
+        private static int _nextId = 1;
         public int ReportId { get; protected set; }
         public DateTime Timestamp { get; protected set; }
         public double Latitude { get; protected set; }
@@ -15,15 +16,16 @@ namespace IntelligencePipeline.Models.Reports
         public int ReliabilityScore { get; set; }
         public string RejectionReason { get; set; }
 
-        protected Report(int reportId, DateTime timestamp, double latitude, double longitude, string description)
+        protected Report(DateTime timestamp, double latitude, double longitude, string description)
         {
-            ReportId = reportId;
+            ReportId = _nextId;
             Timestamp = timestamp;
             Latitude = latitude;
             Longitude = longitude;
             Description = description;
             Status = ReportStatus.New;
             RejectionReason = " ";
+            _nextId ++;
         }
 
         public abstract string GetSourceType();

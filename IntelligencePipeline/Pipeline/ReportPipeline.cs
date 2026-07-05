@@ -13,7 +13,6 @@ namespace IntelligencePipeline.Pipeline
         private int _nextReportId;
         public ReportPipeline()
         {
-            _nextReportId = 0;
             _validatedReports = new ReportRepository();
             _rejectedReports = new RejectedReportRepository();
         }
@@ -23,7 +22,6 @@ namespace IntelligencePipeline.Pipeline
             ValidateReport(report);
             if (report.Status == ReportStatus.Validated) {CalculateMetrics(report);}
             StoreReport(report);
-            _nextReportId++;
             return;
         }
         public ReportRepository GetValidatedReports() 

@@ -7,7 +7,7 @@ namespace IntelligencePipeline.Models.Reports
         public int Direction { get; protected set; }
         public int Distance { get; protected set; }
 
-        public RadarReport(int reportId, DateTime timestamp, double latitude, double longitude, string description, int speed, int direction, int distance) : base(reportId, timestamp, latitude, longitude, description)
+        public RadarReport(DateTime timestamp, double latitude, double longitude, string description, int speed, int direction, int distance) : base(timestamp, latitude, longitude, description)
         {
             Speed = speed;
             Direction = direction;

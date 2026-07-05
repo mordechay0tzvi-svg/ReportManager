@@ -1,11 +1,10 @@
-using IntelligencePipeline.Models.Reports;
-namespace IntelligencePipeline.DroneReportCreate
+namespace IntelligencePipeline.ReportCreate
 {
-    class ReportCreate
+    class BaseReportCreate
     {
-        static DateTime SetDatetime()
+        public static DateTime SetDatetime()
         {
-            string datetime = "";
+            string? datetime = "";
             DateTime dt;
             while (!DateTime.TryParse(datetime, out dt))
             {
@@ -15,10 +14,10 @@ namespace IntelligencePipeline.DroneReportCreate
             return dt;
         }
 
-        static double SetLatitude()
+        public static double SetLatitude()
         {
             double ltd;
-            string latitude = "";
+            string? latitude = "";
             while (double.TryParse(latitude, out ltd))
             {
                 Console.WriteLine("Enter latitude");
@@ -27,10 +26,10 @@ namespace IntelligencePipeline.DroneReportCreate
             return ltd;
         }
 
-        static double SetLongitude() 
+        public static double SetLongitude() 
         {
             double lgt;
-            string longitude = "";
+            string? longitude = "";
             while (double.TryParse(longitude, out lgt))
             {
                 Console.WriteLine("Enter longitude");
@@ -39,13 +38,11 @@ namespace IntelligencePipeline.DroneReportCreate
             return lgt;
         }
 
-        static string SetDescription()
+        public static string SetDescription()
         {
             Console.WriteLine("Enter description");
             string description = Console.ReadLine();
             return description;
         }
-
-        static void Main() { }
     }
 }

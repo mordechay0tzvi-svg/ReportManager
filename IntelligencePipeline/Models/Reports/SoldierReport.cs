@@ -8,7 +8,7 @@ namespace IntelligencePipeline.Models.Reports
         public string Unit { get; protected set; }
         public int ConfidenceLevel { get; protected set; }
 
-        public SoldierReport(int reportId, DateTime timestamp, double latitude, double longitude, string description, string soldierName, string soldierID, string unit, int confidenceLevel) : base(reportId, timestamp, latitude, longitude, description)
+        public SoldierReport(DateTime timestamp, double latitude, double longitude, string description, string soldierName, string soldierID, string unit, int confidenceLevel) : base(timestamp, latitude, longitude, description)
         {
             SoldierName = soldierName;
             SoldierID = soldierID;

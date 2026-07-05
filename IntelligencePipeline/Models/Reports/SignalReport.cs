@@ -8,7 +8,7 @@ namespace IntelligencePipeline.Models.Reports
         public Language Language { get; protected set; }
         public int SignalStrength { get; protected set; }
 
-        public SignalReport(int reportId, DateTime timestamp, double latitude, double longitude, string description, double frequency, string content, Language language, int signalStrength) : base(reportId, timestamp, latitude, longitude, description)
+        public SignalReport(DateTime timestamp, double latitude, double longitude, string description, double frequency, string content, Language language, int signalStrength) : base(timestamp, latitude, longitude, description)
         {
             Frequency = frequency;
             Content = content;
